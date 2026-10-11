@@ -1,5 +1,6 @@
-# Object file
-*.o
-
-# Ada Library Information
-*.ali
+.idea/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
