@@ -170,10 +170,8 @@ for set_name, features in feature_sets.items():
             "mean_macro_f1": mean_f1,
             "oof_accuracy": oof_accuracy,
             "oof_macro_f1": oof_f1,
-            "recall_facies_1": recalls[0],
-            "recall_facies_5": recalls[4],
-            "recall_facies_7": recalls[6],
-            "recall_facies_9": recalls[8]
+            **{f"recall_facies_{facies}": recall
+                for facies, recall in zip(classes, recalls)}
         })
 
 
