@@ -74,7 +74,7 @@ for fold_number, (train_idx, val_idx) in enumerate(folds, start=1):
         "train": train["Facies"].value_counts(),
         "validation": val["Facies"].value_counts()
     })
-    counts = counts.reindex(classes, fill_value=0)
+    counts = counts.reindex(classes).fillna(0).astype(int)
     print(counts.to_string())
 
 weights = {
