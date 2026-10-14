@@ -65,6 +65,18 @@ folds = list(
         dev["Well Name"]
     )
 )
+print("\nКОЛИЧЕСТВО ФАЦИЙ В TRAIN И VALIDATION")
+for fold_number, (train_idx, val_idx) in enumerate(folds, start=1):
+    train = dev.iloc[train_idx]
+    val = dev.iloc[val_idx]
+    print(f"\nFOLD {fold_number}")
+    counts = pd.DataFrame({
+        "train": train["Facies"].value_counts(),
+        "validation": val["Facies"].value_counts()
+    })
+    counts = counts.reindex(classes).fillna(0).astype(int)
+    print(counts.to_string())
+
 weights = {
     "ordinary": None,
     "balanced": "balanced"
