@@ -6,7 +6,7 @@ from sklearn.model_selection import GroupShuffleSplit, GroupKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, recall_score
 
-df = pd.read_csv("facies_data.csv")
+df = pd.read_csv("../facies_data.csv")
 base_features = [
     "GR", "ILD_log10", "DeltaPHI",
     "PHIND", "PE", "RELPOS", "NM_M"

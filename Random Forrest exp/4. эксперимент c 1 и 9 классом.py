@@ -9,7 +9,7 @@ from sklearn.metrics import (
     f1_score,
     recall_score
 )
-df = pd.read_csv("facies_data.csv")
+df = pd.read_csv("../facies_data.csv")
 base_features = [
     "GR",
     "ILD_log10",

@@ -10,7 +10,7 @@ from sklearn.metrics import (
     recall_score,
     classification_report
 )
-df = pd.read_csv("facies_data.csv")
+df = pd.read_csv("../facies_data.csv")
 features = [
     "GR",
     "ILD_log10",

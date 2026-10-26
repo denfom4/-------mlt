@@ -3,7 +3,7 @@ from sklearn.model_selection import GroupShuffleSplit
 from sklearn.model_selection import GroupKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-df = pd.read_csv("facies_data.csv")
+df = pd.read_csv("../facies_data.csv")
 features = ["GR","ILD_log10","DeltaPHI","PHIND","PE"]
 
 X = df[features]
