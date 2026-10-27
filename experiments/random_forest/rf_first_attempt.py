@@ -8,8 +8,10 @@ from sklearn.metrics import (
     confusion_matrix,
     classification_report
 )
-
-df = pd.read_csv("../facies_data.csv")
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_PATH = PROJECT_ROOT / "data" / "facies_data.csv"
+df = pd.read_csv(DATA_PATH)
 features = [
     "GR",
     "ILD_log10",

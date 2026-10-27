@@ -1,11 +1,13 @@
-
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import GroupShuffleSplit, GroupKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score
-df = pd.read_csv("../facies_data.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_PATH = PROJECT_ROOT / "data" / "facies_data.csv"
+df = pd.read_csv(DATA_PATH)
 features = [
     "GR",
     "ILD_log10",

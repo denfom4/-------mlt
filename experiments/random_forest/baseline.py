@@ -1,4 +1,4 @@
-
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,7 +12,9 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay
 )
-df = pd.read_csv("facies_data.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_PATH = PROJECT_ROOT / "data" / "facies_data.csv"
+df = pd.read_csv(DATA_PATH)
 features = [
     "GR",
     "ILD_log10",

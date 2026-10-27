@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("../facies_data.csv")
+df = pd.read_csv("../data/facies_data.csv")
 print(df["Well Name"].unique())
 # Выбираем скважину
 well = "SHRIMPLIN"
