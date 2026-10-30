@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from sklearn.model_selection import GroupShuffleSplit, GroupKFold
+from sklearn.model_selection import GroupShuffleSplit, LeaveOneGroupOut
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.base import clone
 
@@ -20,7 +20,7 @@ from sklearn.metrics import (
 from catboost import CatBoostClassifier
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = PROJECT_ROOT / "data" / "facies_data.csv"
-RESULTS_DIR = PROJECT_ROOT / "results"
+RESULTS_DIR = PROJECT_ROOT / "results" / "logo_6"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 df = pd.read_csv(DATA_PATH)
 features = [
@@ -63,9 +63,19 @@ X = dev[features]
 y = dev["Facies"]
 groups = dev["Well Name"]
 
-cv = GroupKFold(n_splits=3)
+cv = LeaveOneGroupOut()
 folds = list(cv.split(X, y, groups))
+print("\nПЛАН ВАЛИДАЦИИ")
 
+for fold_number, (train_idx, val_idx) in enumerate(folds, start=1):
+    train_wells = groups.iloc[train_idx].unique()
+    val_wells = groups.iloc[val_idx].unique()
+
+    print(f"\nFold {fold_number}")
+    print("Обучение:", list(train_wells))
+    print("Проверка:", list(val_wells))
+
+    assert len(val_wells) == 1
 models = {
     "RandomForest": RandomForestClassifier(
         n_estimators=50,
@@ -96,7 +106,6 @@ models = {
 }
 results = []
 fold_results = []
-
 prediction_table = dev[
     ["Well Name", "Depth", "Facies"]
 ].copy()
