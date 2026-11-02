@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 from catboost import CatBoostClassifier
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DATA_PATH = ROOT / "data" / "facies_data.csv"
 RESULTS_DIR = ROOT / "results" / "logo_6"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
