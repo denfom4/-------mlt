@@ -1,0 +1,36 @@
+{
+    "algorithm": "CatBoostClassifier",
+    "model_file": "catboost_depth4.cbm",
+    "features": [
+        "GR",
+        "ILD_log10",
+        "DeltaPHI",
+        "PHIND",
+        "PE",
+        "RELPOS",
+        "NM_M"
+    ],
+    "target": "Facies",
+    "train_wells": [
+        "CHURCHMAN BIBLE",
+        "LUKE G U",
+        "NEWBY",
+        "NOLAN",
+        "SHANKLE",
+        "SHRIMPLIN"
+    ],
+    "excluded_wells": [
+        "CROSS H CATTLE",
+        "Recruit F9"
+    ],
+    "training_rows": 2663,
+    "parameters": {
+        "iterations": 500,
+        "depth": 4,
+        "learning_rate": 0.05,
+        "loss_function": "MultiClass",
+        "random_seed": 42
+    },
+    "validation_method": "LeaveOneGroupOut",
+    "note": "Model selected using development-well cross-validation. Holdout not used in this training."
+}
